@@ -14,3 +14,4 @@ spring:
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   tyep-aliases-package: com.example.entities
+  type-handlers-package: com.example.dao

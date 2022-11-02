@@ -7,6 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>cloud-provider-payment8001</module>
+        <module>cloud-consumer-order80</module>
     </modules>
     <name>springcloudStudy</name>
     <description>springcloudStudy</description>
@@ -109,7 +110,9 @@
     </dependencyManagement>
 
     <build>
+        <finalName>springcloudStudy</finalName>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -125,7 +128,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.example.springcloudstudy.SpringcloudStudyApplication</mainClass>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                     <mainClass>com.example.springcloudstudy.SpringcloudStudyApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class payment {
+public class Payment {
     private Long id;
     private String serial;
 }
