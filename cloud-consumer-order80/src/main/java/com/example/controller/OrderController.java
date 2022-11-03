@@ -22,13 +22,15 @@ public class OrderController {
     public static final String PAYMENT_URL = "http://localhost:8001";
     @Autowired
     private RestTemplate restTemplate;
+
     @GetMapping("/consumer/payment/create")
-    public CommonResult<Payment> create(Payment payment){
-        return  restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
+    public CommonResult<Payment> create(Payment payment) {
+        log.info("data={}", payment);
+        return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/get"+id,CommonResult.class);
+    public CommonResult<Payment> getPayment(@PathVariable("id") Long id) {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
     }
 }
