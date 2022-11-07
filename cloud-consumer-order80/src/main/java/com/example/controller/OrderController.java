@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,7 +25,7 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @GetMapping("/consumer/payment/create")
-    public CommonResult<Payment> create(Payment payment) {
+    public CommonResult<Payment> create( Payment payment) {
         log.info("data={}", payment);
         return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
     }
