@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 引入配置文件 mybatis-generator:generate-->
+    <properties resource="mybatis/generator/mybatisGeneratorinit.properties"/>
+
+    <!--classPathEntry:数据库的JDBC驱动,换成你自己的驱动位置 可选 -->
+    <classPathEntry location="D:\Maven\.m2\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
+    <!--    <configuration>
+            开启驼峰命名规则自动转换
+            <settings>
+            <setting name="mapUnderscoreToCamelCase" value="true" />
+            </settings>
+        </configuration> -->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
+        一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="utf-8"/>
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true"/> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="${jdbc_driver}" connectionURL="${jdbc_url}" userId="${jdbc_user}"
+                        password="${jdbc_password}"/>
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--&lt;!&ndash; 生成实体类地址 &ndash;&gt;-->
+        <!--<javaModelGenerator targetPackage="com.onecard.customize.dao.model" targetProject="H:\9F\代码生成">-->
+        <!--<property name="enableSubPackages" value="false"/>-->
+        <!--<property name="trimStrings" value="true"/>-->
+        <!--</javaModelGenerator>-->
+        <!--&lt;!&ndash; 生成mapxml文件 &ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="com.onecard.customize.dao.xml" targetProject="H:\9F\代码生成">-->
+        <!--<property name="enableSubPackages" value="false"/>-->
+        <!--</sqlMapGenerator>-->
+        <!--&lt;!&ndash; 生成mapxml对应client，也就是接口dao &ndash;&gt;-->
+        <!--<javaClientGenerator targetPackage="com.onecard.customize.dao.mapper" targetProject="H:\9F\代码生成" type="XMLMAPPER">-->
+        <!--<property name="enableSubPackages" value="false"/>-->
+        <!--</javaClientGenerator>-->
+
+        <!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
+        <!-- 所生成的实体类的位置(默认资源包src) -->
+        <javaModelGenerator targetPackage="com.example.entity"
+                            targetProject="src/main/java"/>
+        <!-- 所生成的sqlMap的影射文件的位置(默认资源包src) -->
+        <sqlMapGenerator targetPackage="mybatis.mapper"
+                         targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.example.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="dtx_device_instruction_dict" domainObjectName="DtxDeviceInstructionDict"
+               enableCountByExample="false"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableInsert="true">
+            <property name="useActualColumnNames" value="false"/>
+        </table>-->
+        <table tableName="payment" domainObjectName="PayMent"
+               enableCountByExample="false"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableInsert="true">
+        <property name="useActualColumnNames" value="false"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
